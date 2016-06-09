@@ -1,9 +1,9 @@
 ========================================================
-Complete Sample Application with the MongoDB Ruby Driver
+Sample Application with the MongoDB Ruby Driver
 ========================================================
 
 Overview
-````````
+--------
 
 This project demonstrates how you might use the MongoDB Ruby driver
 to locate restaurants in a particular New York neighborhood. It uses
@@ -14,7 +14,7 @@ locations, while the ``restaurants.json`` JSON file contains a list
 of restaurants and their locations.
 
 Prerequisites
-`````````````
+-------------
 
 Before using this sample application, make sure you have a ``mongod``
 instance running on the default port ``27017``.
@@ -23,7 +23,7 @@ Make sure that all the program files (``import.sh`` and all the ``.rb``
 files) are executable.
 
 Files to run once
-`````````````````
+-----------------
 
 - ``import.sh`` imports the ``restaurants.json`` and
   ``neighborhoods.json`` data files into
@@ -48,7 +48,7 @@ If you want to start over from scratch, the ``reset.rb`` script drops
 both the collections from the database.
 
 Find nearby restaurants
-```````````````````````
+-----------------------
 
 You can run ``find_nearby.rb`` to either list all the restaurants in
 a specified neighborhood, or list all the neighborhoods which begin
@@ -56,4 +56,20 @@ with a specified letter.
 
 From the command prompt:
 
+```
+$ ./find_nearby.rb -l c # returns a list of all neighborhoods starting with 'C'
 
+$ ./find_nearby.rb -n Canarsie # returns a list of all restaurants in the Canarsie neighborhood
+
+$ ./find_nearby.rb -n 'Park Slope-Gowanus' # use quotes around neighborhoods with spaces
+```
+
+Create a new restaurant record
+------------------------------
+
+To add a new record to the ``restaurants`` collection, use the
+``insert_one.rb`` file from the command line and follow the prompts.
+
+```
+$ ./insert_one.rb 
+```
