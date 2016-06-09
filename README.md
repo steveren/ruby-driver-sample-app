@@ -65,7 +65,11 @@ $ ./find_nearby.rb -n 'Park Slope-Gowanus' # use quotes around neighborhoods wit
 ```
 
 Create a new restaurant record
+<<<<<<< HEAD
 ------------------------------
+=======
+``````````````````````````````
+>>>>>>> 9516dda3eeb3967122065f07d1bf8738813ae0e1
 
 To add a new record to the ``restaurants`` collection, use the
 ``insert_one.rb`` file from the command line and follow the prompts.
