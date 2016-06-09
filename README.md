@@ -56,4 +56,20 @@ with a specified letter.
 
 From the command prompt:
 
+```
+$ ./find_nearby.rb -l c # returns a list of all neighborhoods starting with 'C'
 
+$ ./find_nearby.rb -n Canarsie # returns a list of all restaurants in the Canarsie neighborhood
+
+$ ./find_nearby.rb -n 'Park Slope-Gowanus' # use quotes around neighborhoods with spaces
+```
+
+Create a new restaurant record
+``````````````````````````````
+
+To add a new record to the ``restaurants`` collection, use the
+``insert_one.rb`` file from the command line and follow the prompts.
+
+```
+$ ./insert_one.rb 
+```

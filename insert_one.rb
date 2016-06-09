@@ -2,6 +2,7 @@
 
 require 'mongo'
 
+Mongo::Logger.logger.level = ::Logger::FATAL # default is DEBUG, which is noisy
 client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'test')
 coll = client[:restaurants]
 
@@ -34,7 +35,7 @@ puts "\nEmail address:\n"
 
 email = gets.chomp
 
-puts "Location coordinates (longitude, latitude):\n"
+puts "\nLocation coordinates (longitude, latitude):\n"
 
 longlat_string = gets.chomp
 
@@ -62,4 +63,8 @@ insert_doc = { 'name' => name,
 
 result = coll.insert_one( insert_doc )
 
-result.n == 1 ? puts "Document successfully created." : puts "Document creation failed."
+if result.n == 1
+  puts "Document successfully created.\n#{insert_doc}"
+else
+  puts "Document creation failed."
+end
