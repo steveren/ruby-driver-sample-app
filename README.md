@@ -34,7 +34,7 @@ Files to run once
 $ ./import.sh
 ```
 
-- ``setup_collection.rb`` creates several indexes on the two
+- ``setup_collections.rb`` creates several indexes on the two
   collections. In the ``restaurants`` collection it creates:
   - a multikey index on the ``categories`` field
   - a geospatial index on the ``contact.location`` field
@@ -48,8 +48,16 @@ $ ./import.sh
   In the ``neighborhoods`` collection it creates:
   - a geospatial index on the ``geometry`` field
 
+```
+$ ./setup_collections.rb
+```
+
 If you want to start over from scratch, the ``reset.rb`` script drops
 both the collections from the database.
+
+```
+$ ./reset.rb
+```
 
 Find nearby restaurants
 -----------------------
