@@ -29,6 +29,10 @@ Files to run once
   ``neighborhoods.json`` data files into
   collections called ``restaurants`` and ``neighborhoods``
   in the ``test`` database.
+  
+```
+$ ./import.sh
+```
 
 - ``setup_collection.rb`` creates several indexes on the two
   collections. In the ``restaurants`` collection it creates:
