@@ -2,8 +2,8 @@
 
 require 'mongo'
 require 'optparse'
-require_relative 'lib/neighborhood'
-require_relative 'lib/connection'
+require_relative '../lib/neighborhood'
+require_relative '../lib/connection'
 
 conn = Connection.new
 

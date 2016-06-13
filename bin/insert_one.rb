@@ -1,16 +1,11 @@
 #!/usr/bin/ruby
 
 require 'mongo'
+require_relative '../lib/connection'
 
-# set logger level to FATAL (only show serious errors)
-Mongo::Logger.logger.level = ::Logger::FATAL 
-
-# set up a connection to the mongod instance which is running locally,
-# on the default port 27017
-client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'test')
-
-# work with the restaurants collection
-coll = client[:restaurants]
+conn = Connection.new
+db = conn.client.database
+restaurants = conn.restaurants
 
 # prompt user for inputs
 puts "\nReady to input a new restaurant document.\n"
@@ -74,7 +69,7 @@ insert_doc = { 'name' => name,
              }
 
 # use the insert_one method on the restaurants collection
-result = coll.insert_one( insert_doc )
+result = restaurants.insert_one( insert_doc )
 
 # check for success or failure
 if result.n == 1

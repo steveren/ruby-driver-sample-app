@@ -1,8 +1,9 @@
 #!/usr/bin/ruby
 
 require 'mongo'
+require_relative '../lib/connection'
 
-client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'test')
+conn = Connection.new
 
-client[:restaurants].drop
-client[:neighborhoods].drop
+conn.restaurants.drop
+conn.neighborhoods.drop
