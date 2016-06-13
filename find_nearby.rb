@@ -3,7 +3,10 @@
 require 'mongo'
 require 'optparse'
 
-def list_neighborhoods(letter)  
+def list_neighborhoods(letter)
+  
+  # use a regular expression to find all neighborhoods starting
+  # with a specified letter
   regex = Regexp.new("^#{letter.upcase}")
   n_list =  @neighborhoods.find({ "name" => regex }, { "name" => 1, "_id" => 0 }).sort({ :name => 1 })
 
@@ -15,13 +18,14 @@ def list_neighborhoods(letter)
 end
 
 def find_restaurants(n)
-  result = @neighborhoods.find({ "name" => n }).first
   
-  unless result
-    puts "\nThat neighborhood is not in the database. You can try again,
-or use 'find_nearby.rb --list' to see a list of neighborhoods.\n\n"
-  else
+  # first check that the specified neighborhood exists
+  result = @neighborhoods.find({ "name" => n }).first
+
+  if result
+
     puts "\nAll restaurants found in #{n}:\n\n"
+
     restaurants = @restaurants.find( { 
       "contact.location" => 
         { "$geoWithin" => 
@@ -32,15 +36,26 @@ or use 'find_nearby.rb --list' to see a list of neighborhoods.\n\n"
     restaurants.each do |r|
       puts r[:name] unless r[:name].empty?
     end    
+
+  else
+
+    puts "\nThat neighborhood is not in the database. You can try again,
+or use 'find_nearby.rb --list' to see a list of neighborhoods.\n\n"
+
   end
   
 end
 
-Mongo::Logger.logger.level = ::Logger::FATAL # default is DEBUG, which is noisy
+# set logger level to FATAL (only show serious errors)
+Mongo::Logger.logger.level = ::Logger::FATAL
+
+# set up a connection to the mongod instance which is running locally,
+# on the default port 27017
 client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'test')
 @restaurants = client[:restaurants]
 @neighborhoods = client[:neighborhoods]
 
+# parse command-line options
 options = { :neighborhood => nil, :list => nil }
 optparse = OptionParser.new do |opt|
   opt.on('-n', '--neighborhood NEIGHBORHOOD', 'list restaurants in this neighborhood') { |o| options[:neighborhood] = o }

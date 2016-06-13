@@ -17,7 +17,7 @@ Prerequisites
 -------------
 
 Before using this sample application, make sure you have a ``mongod``
-instance running on the default port ``27017``.
+instance running on ``localhost`` port ``27017`` (the default).
 
 Make sure that all the program files (``import.sh`` and all the ``.rb``
 files) are executable.
