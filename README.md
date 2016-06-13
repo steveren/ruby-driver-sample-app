@@ -19,8 +19,7 @@ Prerequisites
 Before using this sample application, make sure you have a ``mongod``
 instance running on ``localhost`` port ``27017`` (the default).
 
-Make sure that all the program files (``import.sh`` and all the ``.rb``
-files) are executable.
+Make sure that all the files in the ``bin`` directory are executable.
 
 Files to run once
 -----------------
@@ -30,6 +29,7 @@ Files to run once
   collections called ``restaurants`` and ``neighborhoods``
   in the ``test`` database.
   
+From the ``bin`` directory:
 ```
 $ ./import.sh
 ```
@@ -66,7 +66,7 @@ You can run ``find_nearby.rb`` to either list all the restaurants in
 a specified neighborhood, or list all the neighborhoods which begin
 with a specified letter.
 
-From the command prompt:
+From the command prompt in the ``bin`` directory:
 
 ```
 $ ./find_nearby.rb -l c # returns a list of all neighborhoods starting with 'C'
@@ -84,4 +84,27 @@ To add a new record to the ``restaurants`` collection, use the
 
 ```
 $ ./insert_one.rb 
+```
+
+Count all restaurants in all neighborhoods
+------------------------------------------
+
+``location_count.rb`` is an example of a script to assemble results
+from two collections. Note that this script is "expensive" (may take
+over 5 seconds to run) since it involves a large number of individual
+queries.
+
+```
+$ ./location_count.rb
+```
+
+Unit tests
+----------
+
+To run the unit tests for this project, make sure you have
+[rspec](https://www.relishapp.com/rspec) installed.
+
+From the project root directory:
+```
+$ rspec spec/*
 ```
