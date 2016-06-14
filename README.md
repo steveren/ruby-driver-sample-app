@@ -18,6 +18,7 @@ Prerequisites
 
 Before using this sample application, make sure you have a ``mongod``
 instance running on ``localhost`` port ``27017`` (the default).
+- MongoDB [installation instructions](https://docs.mongodb.com/manual/installation/)
 
 Make sure that all the files in the ``bin`` directory are executable.
 
