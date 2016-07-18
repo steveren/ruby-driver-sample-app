@@ -41,7 +41,8 @@ if options[:neighborhood]
     
   else
     puts "\nThat neighborhood is not in the database. You can try again,
-or use 'find_nearby.rb --list' to see a list of neighborhoods.\n\n"
+or use 'find_nearby.rb --list <letter>' to see a list of neighborhoods
+which begin with <letter>.\n\n"
   end
   
 elsif options[:list] 
